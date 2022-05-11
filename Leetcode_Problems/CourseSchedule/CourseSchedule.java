@@ -1,3 +1,9 @@
+package Leetcode_Problems.CourseSchedule;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
 /*
 Add a checked array along with visited 
 Because after we have seen through one dfs that none of the children node have any cycles then they do not need to be checked again 

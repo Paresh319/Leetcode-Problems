@@ -1,3 +1,8 @@
+package Leetcode_Problems.LongestSubstringWithTwoUniqueCharacters;
+
+import java.util.Collections;
+import java.util.HashMap;
+
 class Solution {
     public int lengthOfLongestSubstringTwoDistinct(String s) {
         HashMap<Character, Integer> hm = new HashMap<>();

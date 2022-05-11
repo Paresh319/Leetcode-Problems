@@ -1,3 +1,7 @@
+package Leetcode_Problems.DivisorGame;
+
+import java.util.Arrays;
+
 class Solution {
     public boolean divisorGame(int n) {
         int[] dp = new int[n+1];

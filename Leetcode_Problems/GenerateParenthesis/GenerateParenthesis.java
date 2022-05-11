@@ -1,3 +1,8 @@
+package Leetcode_Problems.GenerateParenthesis;
+
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution {
     List<String> res = new ArrayList<>();
     List<Character> l = new ArrayList<>();

@@ -1,3 +1,7 @@
+package Leetcode_Problems.HouseRobber;
+
+import java.util.Arrays;
+
 class Solution {
     public int rob(int[] nums) {
         int sum = 0, prevsum = 0;
