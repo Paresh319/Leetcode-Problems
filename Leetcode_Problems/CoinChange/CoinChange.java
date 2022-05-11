@@ -1,3 +1,7 @@
+package Leetcode_Problems.CoinChange;
+
+import java.util.HashMap;
+
 class Solution {
     HashMap<String, Integer> hm = new HashMap<>();
     public int change(int amount, int[] coins) {

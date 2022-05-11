@@ -1,3 +1,8 @@
+package Leetcode_Problems.AllPossibleFullBinaryTrees;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -18,6 +23,13 @@
  This is a hard problem basically we need to recursively form a tree starting from 1 to n as root
  so for 0 the left tree would be 1 and right subtree would be n-1 and so on.
  */
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+    TreeNode() {  }
+}
 class Solution {
     public List<TreeNode> allPossibleFBT(int n) {
          List<TreeNode> l = new ArrayList<>();

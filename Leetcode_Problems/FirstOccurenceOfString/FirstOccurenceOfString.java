@@ -1,3 +1,5 @@
+package Leetcode_Problems.FirstOccurenceOfString;
+
 class Solution {
     public int strStr(String haystack, String needle) {
         if (needle.length() == 0)
