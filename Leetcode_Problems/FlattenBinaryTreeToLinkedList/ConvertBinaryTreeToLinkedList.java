@@ -1,7 +1,7 @@
-package Leetcode_Problems.TreeToLinkedList;
+package Leetcode_Problems.FlattenBinaryTreeToLinkedList;
 
 import java.util.LinkedList;
-import java.util.List;
+// import java.util.List;
 
 class TreeNode {
     int val;
@@ -15,9 +15,20 @@ class TreeNode {
         this.right = right;
     }
 }
+
+
+class Node
+{
+    TreeNode node;
+}
+class LList{
+    Node node;
+    Node next;
+
+}
 public class ConvertBinaryTreeToLinkedList {
 
-    List<TreeNode> res = new LinkedList<>();
+    LinkedList<TreeNode> res = new LinkedList<TreeNode>();
     TreeNode head;
     TreeNode curr;
     public void flatten(TreeNode root) {
@@ -31,6 +42,8 @@ public class ConvertBinaryTreeToLinkedList {
 
     public void preorder(TreeNode root)
     {
+        TreeNode node = new TreeNode(root.val);
+        
         
     }
 

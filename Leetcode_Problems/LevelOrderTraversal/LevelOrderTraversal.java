@@ -1,6 +1,9 @@
 package Leetcode_Problems.LevelOrderTraversal;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Definition for a binary tree node.
@@ -19,7 +22,7 @@ class TreeNode {
   }
  
 class Solution {
-    public List<List<Integer>> levelOrder(TreeNode root) { List<List<Integer>> res = new ArrayList<>();
+     List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
        if(root == null)
         {
@@ -68,5 +71,6 @@ class Solution {
             res.add(new ArrayList<Integer>(temp));  
         }
     }
-                                                         }
+                                                         
+}
     
