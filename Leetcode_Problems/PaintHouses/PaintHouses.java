@@ -1,3 +1,7 @@
+package Leetcode_Problems.PaintHouses;
+
+import java.util.Arrays;
+
 class Solution {
     int[][] memo; 
     public int minCost(int[][] costs) {

@@ -1,3 +1,5 @@
+package Leetcode_Problems.SearchRotatedSortedArray;
+
 class Solution {
     public int findRotateIndex(int left, int right, int[] nums)
     {

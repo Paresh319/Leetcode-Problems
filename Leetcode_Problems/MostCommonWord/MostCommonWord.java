@@ -1,3 +1,7 @@
+package Leetcode_Problems.MostCommonWord;
+
+import java.util.HashMap;
+
 class Solution {
     public String mostCommonWord(String paragraph, String[] banned) {
         paragraph = paragraph.replaceAll("[^a-zA-Z0-9]", " ");

@@ -1,3 +1,5 @@
+package Leetcode_Problems.TrappingRainWater;
+
 class Solution {
     public int trap(int[] height) {
         int sum = 0;

@@ -1,3 +1,5 @@
+package Leetcode_Problems.MaximalSquare;
+
 class Solution {
     public int maximalSquare(char[][] matrix) {
         int[][] dp = new int[matrix.length + 1][matrix[0].length + 1];

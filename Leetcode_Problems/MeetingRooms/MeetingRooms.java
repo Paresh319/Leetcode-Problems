@@ -1,3 +1,8 @@
+package Leetcode_Problems.MeetingRooms;
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 //Learn about priority queue and comparator implementation here
 class Solution {
     public int minMeetingRooms(int[][] intervals) {

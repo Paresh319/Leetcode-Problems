@@ -1,3 +1,5 @@
+package Leetcode_Problems.RmoveELement;
+
 class Solution {
    public int removeElement(int[] nums, int val) {
     int i = 0;

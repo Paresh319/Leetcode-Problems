@@ -1,3 +1,9 @@
+package Leetcode_Problems.SlidingWindowMaximum;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+
 //hard question because we are using a double ended queue and traversing each element of the array
 // we check if the last element of the queue is smaller than the current if yes then pop it. 
 // then we check if the left is greater than the first element in the queue 

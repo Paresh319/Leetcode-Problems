@@ -1,3 +1,10 @@
+package Leetcode_Problems.ValidTree;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+
 class Solution {
     public boolean validTree(int n, int[][] edges) {
         HashSet<Integer> hs = new HashSet<>();
