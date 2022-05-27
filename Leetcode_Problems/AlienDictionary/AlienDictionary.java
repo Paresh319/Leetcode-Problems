@@ -16,7 +16,7 @@ class Solution {
                 hm.putIfAbsent(c, new ArrayList<>());
             }
         }
-        for(int i  = 0; i < words.length - 1; i++)
+        for(int i = 0; i < words.length - 1; i++)
         {
             
             String a = words[i];
@@ -31,14 +31,10 @@ class Solution {
                     break;
                 }
             }
-            // hm.put(a.charAt(p), new ArrayList<Character>());
-            // hm.get(a.charAt(p)).add(b.charAt(q));
-            // continue;
 
         }
          System.out.println(hm);
 
-        // StringBuilder sb = new StringBuilder();
         for(char c: hm.keySet())
         {
             if(!dfs(c))
@@ -47,7 +43,7 @@ class Solution {
             }
         }
        if (sb.length() < hm.size()) {
-            return "";
+            return ""; 
         }
         return sb.toString();
         
