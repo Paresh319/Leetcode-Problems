@@ -54,6 +54,7 @@ public class PopulatingNextPointer2 {
             }
             res.add(new ArrayList<>(temp));
         }
+        return root;
 
         
     }
