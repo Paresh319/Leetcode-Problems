@@ -34,7 +34,7 @@ public class AddTwoNumbersInAlinkedList
             }
             
         }
-        return sum;
+        return node1;
         
     }
 
