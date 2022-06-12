@@ -4,6 +4,8 @@ import java.util.ArrayDeque;
 /*
  * most eficient solution for sliding window maximum 
  * come back to this and revise as it is confusing.
+ 
+ Using monotonically decreasing queue
  */
 public class MAximumSlidingWindowUsingDeque {
     public int[] maxSlidingWindow(int[] nums, int k) 
