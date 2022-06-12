@@ -4,7 +4,7 @@ import java.util.PriorityQueue;
 
 
 /*
- * Using priority queue wil also give TLE The best approach s using a double ended queue
+ * Using priority queue will also give TLE The best approach is using a monotonic decreasing double ended queue
  */
 
 public class MaxSlindingWindowUsingPriorityQueue {
