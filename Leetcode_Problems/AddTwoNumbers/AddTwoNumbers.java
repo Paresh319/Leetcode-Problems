@@ -46,7 +46,6 @@ class Solution {
         {
             l3.next = new ListNode(carry);
         }
-        
         return h.next;
     }
     
