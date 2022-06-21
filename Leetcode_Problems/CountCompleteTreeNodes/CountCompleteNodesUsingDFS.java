@@ -1,0 +1,17 @@
+package Leetcode_Problems.CountCompleteTreeNodes;
+
+public class CountCompleteNodesUsingDFS {
+    
+    public int countNodes(TreeNode root)
+    {
+
+        if(root == null)
+        {
+            return 0;
+        }
+        return 1 + countNodes(root.left) + countNodes(root.right);
+
+    }
+
+    
+}
