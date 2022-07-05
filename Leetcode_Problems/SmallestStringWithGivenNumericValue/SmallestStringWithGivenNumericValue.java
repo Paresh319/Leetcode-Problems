@@ -1,0 +1,15 @@
+package Leetcode_Problems.SmallestStringWithGivenNumericValue;
+
+public class SmallestStringWithGivenNumericValue {
+    public String getSmallestString(int n, int k) {
+        char[] c = new char[n];
+        for(int i = n-1; i >=0; i--)
+        {
+            int val = Math.min(26, k - i);
+            c[i] = (char) ('a' + val - 1);
+            k = k - val;
+        }
+        return String.valueOf(c);
+    }
+    
+}
