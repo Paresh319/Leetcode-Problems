@@ -17,8 +17,6 @@ class Pair
 }
 
 public class MostStonesRemovedFromAStoneOrAColumn {
-
-
     public int removeStones(int[][] stones) {
         HashSet<int[]> visited = new HashSet<int[]>();
         int numOfIslands = 0;
@@ -30,7 +28,6 @@ public class MostStonesRemovedFromAStoneOrAColumn {
                 dfs(a, stones, visited);
                 numOfIslands++;
             }
-            
         }
         return stones.length - numOfIslands;
         

@@ -19,7 +19,6 @@ public class TwoCitySchedCosts {
             totalCost += costs[i][0] + costs[i+n][1];
         }
         return totalCost;
-        
     }
 
     
