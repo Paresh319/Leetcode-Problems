@@ -1,67 +1,77 @@
 package Leetcode_Problems.SearchRotatedSortedArray;
 
 class Solution {
-    public int findRotateIndex(int left, int right, int[] nums)
-    {
-        int pivot = 0;
+    public int search(int[] nums, int target) {
+        int n = nums.length;
+
+    if (n == 1)
+      return nums[0] == target ? 0 : -1;
         
-        while(left < right)
+        int pi = findRotateIndex(nums, 0, nums.length-1);
+        if(nums[pi] == target)
         {
-            pivot = left + (right - left)/2;
-            
-            if(nums[pivot] > nums[right])
-            {
-                left = pivot + 1;
-            }
-            else
-            {
-                right = pivot;
-            }
+            return pi;
         }
+        System.out.println(pi);
+        if (pi == 0)
+      return bSearch(nums, 0, n - 1, target);
         
-        return left;
+        if(target < nums[0])
+        {
+            return bSearch(nums, pi, nums.length -1, target);
+        }
+        return bSearch(nums, 0, pi, target);
     }
     
-    public int bSearch(int left, int right, int[] nums, int target)
+    public int bSearch(int[] nums, int i, int j, int target)
     {
-        int mid = 0;
-        
-        while(left <= right)
+        while(i <= j)
         {
-            mid = left + (right - left)/ 2;
-            
+            int mid = (j+i)/2;
             
             if(nums[mid] == target)
             {
                 return mid;
             }
-            if(target < nums[mid])
-            {
-                right = mid - 1;
-                
-            }
             else 
             {
-                left = mid + 1;
+                if(target > nums[mid]){
+                    i = mid + 1;
+                }
+                else
+                {
+                    j = mid - 1;
+                }
             }
         }
         return -1;
     }
     
-    public int search(int[] nums, int target) {
-        int pivot = findRotateIndex(0, nums.length -1, nums);
-        System.out.println(pivot);
-        int p = 0;
-       
-        if(target >= nums[pivot] && target <= nums[nums.length-1])
+    public int findRotateIndex(int[] nums, int i, int j)
+    {
+        if(nums[i] < nums[j])
         {
-            p = bSearch(pivot, nums.length - 1, nums, target);
+            return 0;
         }
-        else
+        while(i <= j)
         {
-            p = bSearch(0, pivot - 1, nums, target);
+            int mid = (j + i) / 2;
+            if(nums[mid] > nums[mid + 1])
+            {
+                return mid + 1;
+            }
+            else 
+            {
+                if(nums[i] > nums[mid])
+                {
+                    j = mid - 1;
+                }
+                else
+                {
+                    i = mid + 1;
+                }
+            }
         }
-       
-        return p;
+        return 0;
     }
 }

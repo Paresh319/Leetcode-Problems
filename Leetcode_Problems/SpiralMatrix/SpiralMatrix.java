@@ -1,5 +1,6 @@
 package Leetcode_Problems.SpiralMatrix;
 
+import java.rmi.MarshalException;
 import java.util.ArrayList;
 import java.util.List;
 enum Direction{
@@ -10,42 +11,37 @@ enum Direction{
 }
 
 public class SpiralMatrix {
-    int[][] visited;
+    boolean[][] visited;
+    int[][] directions = {{0,1}, {1,0},{0,-1},{-1,0}};
+    int currentDirection = 0;
+    int changeDirection = 0;
     List<Integer> res = new ArrayList<>();
+    int row = 0;
+    int col = 0;
+    int m = 0;
+    int n =0;
     public List<Integer> spiralOrder(int[][] matrix) {
-        visited = new int[matrix.length][matrix[0].length];
-        
-        dfs(matrix, 0 , 0 , Direction.right);
+        m = matrix.length;
+        n = matrix[0].length;
+        res.add(matrix[0][0]);
+        matrix[0][0] = 101;
+
+        while(changeDirection < 2)
+        {
+            while(row + directions[currentDirection][0] < m && col + directions[currentDirection][1] < n && 
+            row + directions[currentDirection][0] >= 0 && col + directions[currentDirection][1] >= 0 &&
+            matrix[row+ directions[currentDirection][0]][col + directions[currentDirection][1]] != 101)
+            {
+                changeDirection = 0;
+                row = row + directions[currentDirection][0];
+                col = col + directions[currentDirection][1];
+                res.add(matrix[row][col]);
+                matrix[row][col] = 101;
+            }
+            currentDirection = (currentDirection + 1) % 4;
+            changeDirection++;
+        }
         return res;
-        
-    }
-    
-    public void dfs(int[][] matrix, int row, int col, Direction dir)
-    {
-        if(dir == Direction.right)
-        {
-            if(col == matrix[0].length - 1 || visited[row][col + 1])
-            {
-                dfs(matrix, row + 1, col, Direction.down);
-            }
-        }
-        if(dir == Direction.down)
-        {
-            if(row == matrix.length - 1)
-            {
-                dfs(matrix, row , col - 1, Direction.left);
-            }
-
-        }
-        if(dir == Direction.left)
-        {
-
-        }
-        if(dir == Direction.up)
-        {
-
-        }
-
         
     }
 
