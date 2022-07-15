@@ -25,14 +25,11 @@ public class FlattenADoublyLinkedList {
             prev = curr;
             curr = curr.next;
         }
-        
-        
         return newHead.next;
     }
     
     public void recursiveHelper(Node curr)
     {
-        
         while(curr != null)
         {
             if(curr.child == null)
