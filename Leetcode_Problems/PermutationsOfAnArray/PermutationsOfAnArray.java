@@ -6,17 +6,19 @@ import java.util.List;
 
 public class PermutationsOfAnArray {
     List<List<Integer>> res = new ArrayList<>();
+    int n;
     public List<List<Integer>> permute(int[] nums) {
-        permute(nums, 0, nums.length);
+        n = nums.length;
+        permute(nums, 0, n);
         return res;
+        
+        
     }
-    
     public void permute(int[] nums, int left, int right)
     {
-        for(int i = left; i <= right; i++)
+        if(left == n)
         {
-            nums = swap(nums, left, i);
-            List<Integer> temp = new ArrayList<>();
+             List<Integer> temp = new ArrayList<>();
             for(int p: nums)
             {
                 temp.add(p);
@@ -25,7 +27,13 @@ public class PermutationsOfAnArray {
             {
                 res.add(new ArrayList<Integer>(temp));
             }
-            permute(nums, i + 1, nums.length - 1);
+            
+        }
+        for(int i = left; i < n; i++)
+        {
+            nums = swap(nums, left, i);
+            
+            permute(nums, left + 1, right);
             nums = swap(nums, i, left);
         }
     }
