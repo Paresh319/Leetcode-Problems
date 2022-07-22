@@ -1,7 +1,6 @@
 package Leetcode_Problems.PermutationsOfAnArray;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PermutationsOfAnArray {
@@ -11,8 +10,6 @@ public class PermutationsOfAnArray {
         n = nums.length;
         permute(nums, 0, n);
         return res;
-        
-        
     }
     public void permute(int[] nums, int left, int right)
     {
