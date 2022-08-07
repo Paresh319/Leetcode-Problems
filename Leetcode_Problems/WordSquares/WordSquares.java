@@ -1,32 +1,46 @@
 package Leetcode_Problems.WordSquares;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class WordSquares {
     List<List<String>> res = new ArrayList<>();
-    int k = 0;
+    // int k = 0;
     public List<List<String>> wordSquares(String[] words) {
-        k = words[0].length();
+        // k = words[0].length();
         for(int i = 0; i < words.length; i++)
         {
-            recursiveHelper(words, i, new ArrayList<String>(), )
+            int len = words[i].length();
+            ArrayList<String> l = new ArrayList<String>();
+            l.add(words[i]);
+
+            backtrack(words, i, len, l, 0, new HashSet<String>());
         }
+        return res;
     }
-    public void recursiveHelper(String[] words, int i, ArrayList<String> l)
+    public void backtrack(String[] words, int i, int len, ArrayList<String> l, int ind, HashSet<String> hs)
     {
-        if(i >= l.size())
+        if(l.size() == len)
         {
+            res.add(new ArrayList<>(l));
             return;
         }
-        if(k == l.size())
+        hs.add(words[i]);
+
+        for(int k = 0; k < words.length; k++)
         {
-            res.add(new ArrayList<String>(l));
-        }
-        l.add(words[i]);
-        for(int j = i + 1; j < words.length; j++)
-        {
-            recursiveHelper(words, j, l);
+            String str = words[k];
+            if(!str.equals(words[i]) && !hs.contains(str))
+            {
+                if(str.length() == words[i].length())
+                {
+                    if(words[i].charAt(ind + 1) == str.charAt(ind))
+                    {
+                        backtrack(words, len, k, l, ind + 1, hs);
+                    }
+                }
+            }
         }
     }
 }
