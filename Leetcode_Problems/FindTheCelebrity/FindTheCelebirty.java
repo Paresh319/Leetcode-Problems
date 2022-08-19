@@ -4,13 +4,20 @@ public class FindTheCelebirty {
     /* The knows API is defined in the parent class Relation.
       boolean knows(int a, int b); */
 
-public class Solution extends Relation {
+public class Solution {
     private int numberOfPeople;
+
+    public boolean knows(int a, int b)
+    {
+        return true; //if(a knows b)
+        //or false if a does not know b;
+        
+        // API provided in the question on leetcode
+
+    }
     public int findCelebrity(int n) {
         numberOfPeople = n;
-        int[][] arr = new int[n][2];
-        int celebrity = -1;
-        boolean flag = true;
+        
         for (int i = 0; i < n; i++) {
             if (isCelebrity(i)) {
                 return i;
