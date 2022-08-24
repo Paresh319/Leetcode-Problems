@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\ppandit5\\Documents\\Java dependencies\\commons-lang3-3.12.0\\commons-lang3-3.12.0.jar"
+    ]
+}
