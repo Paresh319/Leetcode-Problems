@@ -6,14 +6,15 @@ import java.util.List;
 
 public class WordSquares {
     List<List<String>> res = new ArrayList<>();
-    // int k = 0;
+    StringBuilder sb = new StringBuilder();
+    
     public List<List<String>> wordSquares(String[] words) {
         // k = words[0].length();
         for(int i = 0; i < words.length; i++)
         {
             int len = words[i].length();
             ArrayList<String> l = new ArrayList<String>();
-            l.add(words[i]);
+            // l.add(words[i]);
 
             backtrack(words, i, len, l, 0, new HashSet<String>());
         }
