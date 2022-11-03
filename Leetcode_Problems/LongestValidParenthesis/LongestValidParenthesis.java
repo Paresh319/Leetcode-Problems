@@ -7,61 +7,111 @@ import java.util.PriorityQueue;
 import java.util.Stack;
 
 public class LongestValidParenthesis {
-    HashSet<String> hs = new HashSet<>();
-
-    public int longestValidParentheses(String s) {
-         recursiveHelper("", 0, 0, 0, s);
-         PriorityQueue<String> pq = new PriorityQueue<>(new Comparator<String>() {
-            public int compare(String a, String b) {
-                return b.length() - a.length();
+    static int max = 0;
+    static HashSet<String> hs = new HashSet<>();
+    
+    public static int longestValidParentheses(String s) {
+        int open = 0;
+        int close = 0;
+        for(char c: s.toCharArray()) {
+            if(c == '(') {
+                open++;
             }
-         });
-         return pq.peek().length();
-
-        
+            else {
+                close++;
+            }
+        }
+        recursiveHelper(s, open, close);
+        return max;
     }
-
-    public void recursiveHelper(String a, int open, int close, int index, String s) {
-        if(index == s.length()) {
-            if(isValid(s)) {
-                hs.add(s);
-            }
+    
+    public static void recursiveHelper(String s, int open, int close) {
+        if(s.length() == 0 || s.length() <= max || hs.contains(s)) {
             return;
         }
-
-        if(s.charAt(index) == ')') {
-            if(open <= close + 1) {
-                recursiveHelper(a + ')', open, close + 1, index + 1, s);
-                recursiveHelper(a, open, close, index + 1, s);
+        if(open == close && s.charAt(s.length() - 1) == ')' && s.charAt(0) == '(') {
+            if(isValid(s)) {
+                max = Math.max(max, s.length());
+                return;
             }
         }
+        hs.add(s);
+        
+        if(s.charAt(0) == '(') {
+            recursiveHelper(s.substring(1), open - 1, close);
+        }
         else {
-            recursiveHelper(a + '(', open + 1, close, index + 1, s);
-            recursiveHelper(a, open, close, index + 1, s);
+            recursiveHelper(s.substring(1), open, close - 1);
+        }
+        if(s.charAt(s.length() - 1) == ')') {
+            recursiveHelper(s.substring(0, s.length() - 1), open, close - 1);
+        }
+        else {
+            recursiveHelper(s.substring(0, s.length() - 1), open - 1, close);
         }
     }
-
-    public boolean isValid(String s) {
+    
+    public static boolean isValid(String s) {
         Stack<Character> stk = new Stack();
         int i = 0;
         HashMap<Character, Character> hm = new HashMap();
         hm.put(')', '(');
-                
-        while(i < s.length()){
+        
+        while(i < s.length())
+        {
             char c = s.charAt(i);
-            if(hm.containsKey(c)){
-                if(stk.isEmpty() || stk.pop() != hm.get(c)) {
+            if(hm.containsKey(c))
+            {
+                if(stk.isEmpty() || stk.pop() != hm.get(c))
+                {
                     return false;
                 }
             }
-            else  {
+            else 
+            {
                 stk.push(c);
             }
             i++;
         }
-        if(stk.isEmpty()) {
+        if(stk.isEmpty())
+        {
             return true;
         }
         return false;
+        
     }
+    public static void main(String[] args) {
+        System.out.println(longestValidParentheses("((())())(()))(()()(()(()))(()((((()))))))((()())()))()()(()(((((()()()())))()())(()()))((((((())))((()))()()))))(()))())))()))()())((()()))))(()(((((())))))()((()(()(())((((())(())((()()(()())))())(()(())()()))())(()()()))()(((()())(((()()())))(((()()()))(()()))()))()))))))())()()((()(())(()))()((()()()((())))()(((()())(()))())())))(((()))))())))()(())))()())))())()((()))((()))()))(((())((()()()(()((()((())))((()()))())(()()(()))))())((())))(()))()))))))()(()))())(()())))))(()))((())(()((())(((((()()()(()()())))(()())()((()(()()))(()(())((()((()))))))))(()(())()())()(()(()(()))()()()(()()())))(())(()((((()()))())))(())((()(())())))))())()()))(((())))())((()(()))(()()))((())(())))))(()(()((()((()()))))))(()()()(()()()(()(())()))()))(((()(())()())(()))())))(((()))())(()((()))(()((()()()(())()(()())()(())(()(()((((())()))(((()()(((()())(()()()(())()())())(()(()()((()))))()(()))))(((())))()()))(()))((()))))()()))))((((()(())()()()((()))((()))())())(()((()()())))))))()))(((()))))))(()())))(((()))((()))())))(((()(((())))())(()))))(((()(((((((((((((())(((()))((((())())()))())((((())(((())))())(((()))))()())()(())())(()))))()))()()()))(((((())()()((()))())(()))()()(()()))(())(()()))()))))(((())))))((()()(()()()()((())((((())())))))((((((()((()((())())(()((()))(()())())())(()(())(())(()((())((())))(())())))(()()())((((()))))((()(())(()(()())))))))))((()())()()))((()(((()((()))(((((()()()()()(()(()((()(()))(()(()((()()))))()(()()((((((()((()())()))((())()()(((((()(()))))()()((()())((()())()(())((()))()()(()))"));
+    }
+
+    /*
+     * This is the way which will do it better
+     * 
+class Solution {
+    public int longestValidParentheses(String s) {
+        Stack<Integer> stk = new Stack<>();
+        int i = 0;
+        stk.push(-1);
+        int maxAns = 0;
+        while(i < s.length()) {
+            if(s.charAt(i) == '(') {
+                stk.push(i);
+            }
+            else {
+                stk.pop();
+                if(stk.empty()) {
+                    stk.push(i);
+                }
+                else {
+                    maxAns = Math.max(maxAns, i - stk.peek());
+                }
+            }
+            i++;
+        }
+        return maxAns;
+        
+    }
+}
+     */
+    
 }

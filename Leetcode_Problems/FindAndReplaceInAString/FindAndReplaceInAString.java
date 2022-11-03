@@ -1,19 +1,27 @@
 package Leetcode_Problems.FindAndReplaceInAString;
 
-public class FindAndReplaceInAString {
+import java.util.HashMap;
+
+class FindAndReplaceInAString {
+    HashMap<Integer, Integer> hm = new HashMap<>();
     public String findReplaceString(String s, int[] indices, String[] sources, String[] targets) {
-        
-        StringBuilder sb = new StringBuilder();
-        int j = 0;
-        while(j < s.length()){
-            sb.append(s.charAt(j++));
+        for(int i = 0; i < indices.length; i++) {
+            if(s.startsWith(sources[i], indices[i])) {
+                hm.put(indices[i], i);
+            }
         }
-        for(int i = 0; i < indices.length; i++){
-            if(sb.substring(indices[i]).startsWith(sources[i])) {
-                sb.replace(indices[i], indices[i] + sources[i].length(), sources[i]);
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < s.length();) {
+            if(hm.containsKey(i)) {
+                sb.append(targets[hm.get(i)]);
+                i = i + sources[hm.get(i)].length();
+            }
+            else {
+                sb.append(s.charAt(i));
+                i++;
             }
         }
         return sb.toString();
+        
     }
-    
 }

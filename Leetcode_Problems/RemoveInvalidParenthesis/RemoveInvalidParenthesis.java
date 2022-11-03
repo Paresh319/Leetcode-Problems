@@ -66,7 +66,7 @@ class RemoveInvalidParenthesis {
     }
     
     public boolean isValid(String temp) {
-        Stack<Character> stk = new Stack();
+        Stack<Character> stk = new Stack<Character>();
         int i = 0;
         String s = "";
         for(char c: temp.toCharArray()) {
@@ -74,7 +74,7 @@ class RemoveInvalidParenthesis {
                 s += c;
             }
         }
-        HashMap<Character, Character> hm = new HashMap();
+        HashMap<Character, Character> hm = new HashMap<>();
         hm.put(')', '(');
         
         while(i < s.length()){
