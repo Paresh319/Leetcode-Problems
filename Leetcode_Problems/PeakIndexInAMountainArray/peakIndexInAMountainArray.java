@@ -1,0 +1,18 @@
+package Leetcode_Problems.PeakIndexInAMountainArray;
+
+public class peakIndexInAMountainArray {
+    public int peakIndexInMountainArray(int[] arr) {
+        int i = 0;
+        int j = arr.length - 1;
+        while(i <= j) {
+            int mid = i + (j - i) / 2;
+            if(arr[mid] < arr[mid + 1]) {
+                i = mid + 1;
+            }
+            else {
+                j = mid - 1;
+            }
+        }
+        return i;
+    }
+}
