@@ -4,15 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SplitArrayLargestSum {
-    List<List<Integer>> l = new ArrayList<>();
-    
+    int minSum = Integer.MAX_VALUE;
     public int splitArray(int[] nums, int k) {
-        recursiveHelper(nums, k, 0);
+        for(int i = 0; i < nums.length - k; i++) {
+            recursiveHelper(nums, k, i);
+        }
+        return minSum;
     }
 
-    public void recursiveHelper(int[] nums, int k, int start) {
-        List<Integer> temp = new ArrayList<>();
-        temp.add(nums[start]);
+    public void recursiveHelper(int[] nums, int k, int start, int end) {
+        int sum = 0;
+        for(int i = start; i <= end; i++) {
+            sum += nums[i];
+        }
+        for(int i = start + 1; i < nums.length; i++) {
+            recursiveHelper(nums, k, start, end);
+        }
     }
 }
 

@@ -5,43 +5,34 @@ import java.util.HashSet;
 import java.util.List;
 
 public class WordSquares {
-    List<List<String>> res = new ArrayList<>();
-    StringBuilder sb = new StringBuilder();
-    
+    List<String> res = new ArrayList<>();
+    List<List<String>> result = new ArrayList<>();
+    String[] picking;
     public List<List<String>> wordSquares(String[] words) {
-        // k = words[0].length();
-        for(int i = 0; i < words.length; i++)
-        {
-            int len = words[i].length();
-            ArrayList<String> l = new ArrayList<String>();
-            // l.add(words[i]);
-
-            backtrack(words, i, len, l, 0, new HashSet<String>());
+        HashSet<String> hs = new HashSet<>();
+        for(String p: words){
+            hs.add(p);
         }
-        return res;
+        picking = new String[words[0].length()];
+        int size = words[0].length();
+        for(int i = 0; i < words.length; i++) {
+            picking[0] = words[i];
+            recursiveHelper(hs, words[i], size, String.valueOf(words[i].charAt(0)), 0);
+        }
+        
+        return result;
     }
-    public void backtrack(String[] words, int i, int len, ArrayList<String> l, int ind, HashSet<String> hs)
-    {
-        if(l.size() == len)
-        {
-            res.add(new ArrayList<>(l));
+
+    public void recursiveHelper(HashSet<String> hs, String start, int size, String s, int index) {
+        if(res.size() == size) {
+            result.add(res);
             return;
         }
-        hs.add(words[i]);
+        res.add(start);
+        for(int i = 0; i <= index; i++) {
 
-        for(int k = 0; k < words.length; k++)
-        {
-            String str = words[k];
-            if(!str.equals(words[i]) && !hs.contains(str))
-            {
-                if(str.length() == words[i].length())
-                {
-                    if(words[i].charAt(ind + 1) == str.charAt(ind))
-                    {
-                        backtrack(words, len, k, l, ind + 1, hs);
-                    }
-                }
-            }
         }
+
     }
 }
+    
