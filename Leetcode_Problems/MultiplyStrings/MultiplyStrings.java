@@ -1,44 +1,53 @@
 package Leetcode_Problems.MultiplyStrings;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MultiplyStrings {
 
     public String multiply(String num1, String num2) {
-        char[] a = num1.toCharArray();
-        char[] b = num2.toCharArray();
+        List<List<Integer>> ap = new ArrayList<>();
+        int m = num1.length();
+        int n = num2.length();
         int carry = 0;
+        int maxLength = 0;
+        int zeroes = 0;
 
-        List<String> res = new ArrayList<>();
-        int i = num1.length() - 1;
-        int j = num2.length();
-        
-        boolean smaller = false;
-        int count = 0;
-        // List<String> res = 
-        while(i >= 0)
-        {
-
-            int temp = Integer.valueOf(num1.charAt(i));
-            int product = 0;
-            StringBuilder sb= new StringBuilder();
-            for(int l = num2.length() - 1; l >= 0; l--)
-            {
-                product = temp * Integer.valueOf(num2.charAt(l));
-                for(int ind = 0; ind < count; ind++)
-                {
-                    sb.append(0);
+        for(int i = m-1; i >= 0; i--) {
+            ArrayDeque<Integer> l = new ArrayDeque<>();
+            for(int q = 0; q < zeroes; q++) {
+                l.addFirst(0);
+            }
+            zeroes++;
+            for (int j = n-1; j >= 0; j--) {
+                int a = num1.charAt(i) - '0';
+                int b = num2.charAt(j) - '0';
+                int c = a * b;
+                c += carry;
+                if(c > 9) {
+                    carry = c / 10;
                 }
-                if(product > 9)
-                {
-                    carry = 1;
-                    sb.append(product % 10);
+                else {
+                    carry = 0;
                 }
-                count++;
+                l.addFirst(c % 10);
+            }
+            if(carry > 0) {
+                l.addFirst(carry);
+                carry = 0;
+            }
+            ap.add(new ArrayList<>(l));
+            maxLength = Math.max(maxLength, l.size());
+        }
+        int k = maxLength;
+        for(int i= 0; i < ap.size(); i++) {
+            int sum = 0;
+            int temp = 0;
+            if(k < ap.get(i).size()) {
+                sum += ap.get(i).get(k);
             }
         }
-        
     }
     
 }
