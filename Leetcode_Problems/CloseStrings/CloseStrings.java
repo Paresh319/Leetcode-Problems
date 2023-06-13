@@ -3,7 +3,6 @@ package Leetcode_Problems.CloseStrings;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class CloseStrings {
     public boolean closeStrings(String word1, String word2) {
