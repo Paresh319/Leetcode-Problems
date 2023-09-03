@@ -6,6 +6,7 @@ import java.util.List;
 
 //  {{0, 1}, {0, 2}, {3, 4}};
 public class NumberOfTreesInAForest {
+    int count = 0;
     public int numTrees(int[][] edges) {
         HashMap<Integer, List<Integer>> hm = new HashMap<>();
         HashMap<Integer, Boolean> visited = new HashMap<>();
@@ -20,9 +21,12 @@ public class NumberOfTreesInAForest {
 
         ArrayList<Integer> l = new ArrayList(hm.keySet());
         int trees = 0;
+        int maxCount = Integer.MIN_VALUE;
         for(int a : l) {
             if(visited.get(a) == false) {
+                count = 0;
                 dfs(a, hm, visited);
+                maxCount = Math.max(count, maxCount);
                 trees++;
             }
         }
@@ -35,6 +39,7 @@ public class NumberOfTreesInAForest {
             return;
         }
         visited.put(a, true);
+        count++;
         if(hm.containsKey(a)) {
             for(int b: hm.get(a)) {
                 dfs(b, hm, visited);
